@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block content %}
+<section class="form-page narrow"><a class="back-link" href="{% url 'event_detail' event.pk %}">← Back to {{ event.title }}</a><p class="eyebrow">CLEANUP ZONE</p><h1>{{ page_title }}</h1><p class="muted">Event: <strong>{{ event.title }}</strong>. Use clear area names that members can identify on-site.</p><div class="panel"><form method="post" class="form-stack">{% csrf_token %}{% include "partials/form_fields.html" %}<button class="btn btn-primary" type="submit">Create cleanup area</button></form></div></section>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Log in{% endblock %}
+{% block content %}
+<section class="auth-layout">
+  <div class="auth-aside"><p class="eyebrow">WELCOME BACK</p><h1>Make every cleanup count.</h1><p>Return to your assigned areas, event records, or review queue.</p><div class="aside-note"><span class="dot"></span> One place for cleanup progress and evidence.</div></div>
+  <div class="panel auth-panel"><p class="eyebrow">YOUR WORKSPACE</p><h2>Log in to HIPOS</h2><p class="muted">Enter your account credentials to continue.</p>
+    <form method="post" class="form-stack">{% csrf_token %}{% include "partials/form_fields.html" %}<button class="btn btn-primary btn-block" type="submit">Log in</button></form>
+    <p class="form-footnote">New to HIPOS? <a href="{% url 'register' %}">Create an account</a></p>
+  </div>
+</section>
+{% endblock %}

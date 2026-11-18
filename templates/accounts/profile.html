@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}My profile{% endblock %}
+{% block content %}
+<section class="form-page narrow">
+  <p class="eyebrow">ACCOUNT SETTINGS</p><h1>My profile</h1><p class="muted">You can only edit your own profile. Your role is managed by a HIPOS administrator.</p>
+  <div class="panel profile-summary"><div class="avatar">{{ request.user.first_name|default:request.user.username|slice:':1'|upper }}</div><div><strong>{{ request.user.get_full_name|default:request.user.username }}</strong><span class="muted">@{{ request.user.username }}</span><span class="role-pill">{{ user_profile.get_role_display }}</span></div></div>
+  <div class="panel"><form method="post" class="form-stack">{% csrf_token %}{% include "partials/form_fields.html" %}<button class="btn btn-primary" type="submit">Save profile</button></form></div>
+</section>
+{% endblock %}

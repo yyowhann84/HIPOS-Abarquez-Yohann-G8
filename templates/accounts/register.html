@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Create account{% endblock %}
+{% block content %}
+<section class="form-page narrow">
+  <p class="eyebrow">GET STARTED</p><h1>Create your HIPOS account</h1><p class="muted">Registration creates a Cleanup Member account. An administrator can assign organizer or reviewer access when needed.</p>
+  <div class="panel"><form method="post" class="form-stack">{% csrf_token %}{% include "partials/form_fields.html" %}<button class="btn btn-primary btn-block" type="submit">Create account</button></form><p class="form-footnote">Already registered? <a href="{% url 'login' %}">Log in</a></p></div>
+</section>
+{% endblock %}

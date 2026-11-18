@@ -1,0 +1,32 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="HIPOS campus post-event cleanup accountability and documentation system">
+  <title>{% block title %}HIPOS{% endblock %} · HIPOS</title>
+  <link rel="stylesheet" href="{% static 'css/site.css' %}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="{% url 'home' %}"><span class="brand-mark">H</span><span>HIPOS<small>Campus cleanup tracking</small></span></a>
+    <nav class="topnav" aria-label="Main navigation">
+      {% if user.is_authenticated %}
+        <a href="{% url 'dashboard' %}">Dashboard</a>
+        <a href="{% url 'event_list' %}">Events</a>
+        <a href="{% url 'profile' %}">My profile</a>
+        <form method="post" action="{% url 'logout' %}" class="logout-form">{% csrf_token %}<button class="nav-logout" type="submit">Log out</button></form>
+      {% else %}
+        <a href="{% url 'login' %}">Log in</a>
+        <a class="nav-cta" href="{% url 'register' %}">Create account</a>
+      {% endif %}
+    </nav>
+  </header>
+  <main class="page-shell">
+    {% if messages %}<div class="messages" aria-live="polite">{% for message in messages %}<div class="message message-{{ message.tags|default:'info' }}">{{ message }}</div>{% endfor %}</div>{% endif %}
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="footer"><span>HIPOS · Holistic Institutional Post-event Output and Segregation</span><span>Built for campus cleanup accountability</span></footer>
+</body>
+</html>
